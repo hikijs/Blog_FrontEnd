@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+@import '../../components/NavigatorComponent/style/Navigator.scss',
+        '../../components/WriteContentComponent/style/WriteContent.scss';
+
+.write-page {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
