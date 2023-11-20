@@ -58,12 +58,18 @@
                     flex-direction: row;
                     .summary-review {
                         flex: 1 1 70%;
+                        width: 100%;
                         padding: 10px;
                         display: flex;
                         flex-direction: column;
                         .title-post {
                             width: 100%;
                             padding: 5px;
+                        }
+                        .summary-post {
+                            padding: 5px;
+                            width: 100%;
+                            word-wrap: break-word;
                         }
                     }
                     .thumnail-review {

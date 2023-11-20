@@ -23,7 +23,7 @@ function Body(props) {
   const getAllPost = async () => {
     const apiUrl = `${apiDomain}/v1/api/post/allPost`;
     const reponse = await callGetApiWithoutToken(apiUrl);
-    setPostData(reponse.metaData.listPost);
+    setPostData(reponse.metaData.listPost !== null ? reponse.metaData.listPost : []);
   }
 
   const isThereAnyRecommend = () => {

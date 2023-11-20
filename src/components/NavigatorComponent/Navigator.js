@@ -66,7 +66,7 @@ function Navigator(props) {
         <Fragment>
           <div className='group-component'>
             <Logo navigateHome={navigateHome} useProfile={useProfile}/>
-            <SaveCachePost />
+            <SaveCachePost useProfile={useProfile}/>
           </div>
           <PublishPost
             onSaveEdit={onSaveEdit}
