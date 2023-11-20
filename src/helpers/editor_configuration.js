@@ -68,7 +68,7 @@ const Configuration = (readOnly, data) => {
               const apiUrl = `${apiDomain}/v1/api/upload/image?topic=content`;
               const response = await callPostApiWithoutToken(apiUrl, formData);
 
-              if (response.status === 201) {
+              if (response !== null) {
                 return {
                   success: 1,
                   file: {
