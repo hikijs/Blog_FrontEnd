@@ -207,6 +207,19 @@
                         }
                     }
                 }
+                .permission-input {
+                    width: 100%;
+                    display: flex;
+                    padding: 10px;
+                    flex-direction: row;
+                    align-items: center;
+                    .title {
+                        flex: 1 1 50%;
+                    }
+                    .select {
+                        flex: 1 1 50%;
+                    }
+                }
                 .tag-input {
                     width: 100%;
                     display: flex;

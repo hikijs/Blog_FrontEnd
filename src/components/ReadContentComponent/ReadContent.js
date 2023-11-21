@@ -50,9 +50,13 @@ function ReadContent() {
 
     const rePublishPost = async (postContent) => {
         try {
-            const apiUrl = `${apiDomain}/v1/api/post/edit/${params.post_id}?statusEdit=publish&sharePermission=public`;
+            const apiUrl = `${apiDomain}/v1/api/post/edit/${params.post_id}`;
             const body = {
-                "postContent": postContent
+                "title": titlePost,
+                "statusEdit": "publish",
+                "sharePermission":"follower",
+                "summarize": "this is the summarize",
+                "content": postContent
             }
             await callPutApiWithoutToken(apiUrl, body);
             getPostInfo();
