@@ -19,6 +19,7 @@ function PublishForm(props) {
     const [avatar, setAvatar] = useState(null);
     const [userName, setUserName] = useState(null);
     const [topicPost, setTopicPost] = useState('');
+    const [permissionPost, setPermissionPost] = useState('');
     const [titlePost, setTitlePost] = useState('');
     const [summaryPost, setSummaryPost] = useState('');
     const [currentTime, setCurrentTime] = useState('');
@@ -27,15 +28,17 @@ function PublishForm(props) {
 
     const [displayError, setDisplayError] = useState({
         topic: false,
+        permission: false,
 		title: false,
 		summarize: false,
 	});
 
     const navigate = useNavigate();
 
-    const validationForm = (title, topic, summarize) => {
+    const validationForm = (title, topic, summarize, permission) => {
 		const validated = {
             topic: topic.length <=0 ,
+            permission: permission.length <=0,
             title: title.length <=0 ,
             summarize: summarize.length <=0 ,
         };
@@ -52,9 +55,10 @@ function PublishForm(props) {
     const onSubmit = () => {
         const title = titlePost;
         const topic = topicPost;
+        const permission = permissionPost;
         const summarize = summaryPost;
         const thumbnail = thumbnailPost;
-        const validated = validationForm( title, topic, summarize);
+        const validated = validationForm( title, topic, summarize, permission);
         if (Object.values(validated).some(error => error)) {
             setDisplayError(validated)
             return;
@@ -62,19 +66,18 @@ function PublishForm(props) {
 
         const contentPublish = updateTitlePublish(contentPost, title);
         
-        handlePublishPost(title, topic, summarize, contentPublish, thumbnail);
+        handlePublishPost(title, topic, summarize, contentPublish, thumbnail, permission);
         setShowPublishPopup(false);
     }
 
-    const handlePublishPost = async (title, topic, summarize, contentPost, thumbnail) => {
+    const handlePublishPost = async (title, topic, summarize, contentPost, thumbnail, permission) => {
         if (contentPost === ' return') return;
 
         try {
             const formData = new FormData();
             const postData = {
                 "postTitle": title,
-                "postStatus": "publish",
-                "postPermit": "private",
+                "postPermit": permission,
                 "postCategory": topic,
                 "postSummarize": summarize,
                 "postContent": contentPost
@@ -98,6 +101,10 @@ function PublishForm(props) {
         setTopicPost(event.target.value);
         handleTimePost()
     };
+
+    const handleChoosePermission = (event) => {
+        setPermissionPost(event.target.value);
+    }
 
     const updateTitlePost = (event) => {
         setTitlePost(event.target.value)
@@ -242,6 +249,31 @@ function PublishForm(props) {
                         {
                             displayError.summarize === true &&
                             <div className='title content-text err'>Please add your summary post</div>
+                        }
+                        <div className='permission-input'>
+                            <div className='title content-text'>Choose status for your post:</div>
+                            <div className='select'>
+                                <Box sx={{ minWidth: 120 }}>
+                                    <FormControl fullWidth>
+                                        <InputLabel id="demo-simple-select-label">Status</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={permissionPost}
+                                            label="Age"
+                                            onChange={handleChoosePermission}
+                                        >
+                                            <MenuItem value={'public'}>Public</MenuItem>
+                                            <MenuItem value={'private'}>Private</MenuItem>
+                                            <MenuItem value={'follower'}>Follower</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Box>
+                            </div>
+                        </div>
+                        {
+                            displayError.permission === true &&
+                            <div className='title content-text err'>Please select permission for your post</div>
                         }
                         <div className='tag-input'>
                             <div className='title content-text'>Choose topic of your post:</div>
