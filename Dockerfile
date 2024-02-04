@@ -1,14 +1,11 @@
-FROM node:19
+FROM node:alpine
 
 WORKDIR /app
 
-ENV PATH /app/node_modules/.bin:$PATH
+COPY /Kioku_ReactApp/package.json ./Kioku_ReactApp/yarn.lock ./
 
-COPY . ./
-RUN npm install 
-RUN npm run build 
-RUN npm install -g serve
-EXPOSE 3001
+RUN yarn
 
+COPY ./Kioku_ReactApp .
 
-CMD [ "serve", "-s", "build", "-l", "3001" ]
+CMD ["yarn", "dev", "--debug"]
