@@ -54,17 +54,17 @@ export default function Header() {
               </button>
             </div>
           </form>
-          <div className='col-span-3 col-start-10 grid grid-cols-6 justify-center items-center gap-5'>
-            <div className='col-span-2 py-1 flex gap-3 hover:text-gray-900 cursor-pointer items-center'>
+          <div className='col-span-3 col-start-10 grid grid-cols-6 items-center gap-5'>
+            <div className='col-span-2 py-1 flex justify-end gap-3 hover:text-gray-900 cursor-pointer items-center'>
               <img src={writeIcon} alt='write-icon' className='w-8 h-8'></img>
               <span>Write</span>
             </div>
-            <div className='col-span-2 py-1 flex gap-3 hover:text-gray-900 cursor-pointer items-center'>
+            <div className='col-span-2 py-1 flex justify-end gap-3 hover:text-gray-900 cursor-pointer items-center'>
               <img src={alertIcon} alt='alert-icon' className='w-8 h-8'></img>
               <span>Alert</span>
             </div>
             <Popover
-              className='flex items-center py-1 hover:text-gray-900 cursor-pointer'
+              className='col-span-2 flex items-center justify-end py-1 hover:text-gray-900 cursor-pointer'
               renderPopover={
                 <div className='drop-shadow-md'>
                   <Link
@@ -104,7 +104,7 @@ export default function Header() {
               }
             >
               <div className='col-span-2 col-start-4 flex gap-2 hover:text-gray-900 cursor-pointer items-center'>
-                <div className='w-8 h-8 flex-shrink-0'>
+                <div className='w-9 h-9 flex-shrink-0'>
                   <img
                     src={avatarIcon}
                     alt='avatar-icon'

@@ -1,6 +1,6 @@
 import React from 'react'
-import avatarIcon from 'src/assets/images/demo-avatar.jpeg'
 import LikeIcon from 'src/assets/images/like-icon.png'
+import avatarIcon from 'src/assets/images/demo-avatar.jpeg'
 import thumbnailImage from 'src/assets/images/demo-thumbnail.jpeg'
 
 export default function PostCard() {
