@@ -32,14 +32,14 @@ export default function Popover({
   renderPopover,
   as: Element = 'div',
   initialOpen,
-  placement = 'bottom-end'
+  placement = 'bottom'
 }: Props) {
   const [open, setOpen] = useState(initialOpen || false)
   const arrowRef = useRef<HTMLElement>(null)
   const data = useFloating({
     open,
     onOpenChange: setOpen,
-    middleware: [offset(10), flip(), shift(), arrow({ element: arrowRef })],
+    middleware: [offset(20), flip(), shift(), arrow({ element: arrowRef })],
     whileElementsMounted: autoUpdate,
     transform: false,
     placement
@@ -72,7 +72,7 @@ export default function Popover({
             >
               <span
                 ref={arrowRef}
-                className='absolute z-10 translate-y-[-95%] border-[11px] border-x-transparent border-t-transparent border-b-white'
+                className='absolute z-10 translate-y-[-95%] border-[11px] border-x-transparent border-t-transparent border-b-lightBlue'
                 style={{
                   left: data.middlewareData.arrow?.x,
                   top: data.middlewareData.arrow?.y
