@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { schema, Schema } from 'src/utils/rules'
 import { useMutation } from '@tanstack/react-query'
 import authApi from 'src/apis/auth.api'
+import background from 'src/assets/images/background.jpg'
 
 type FormData = Pick<Schema, 'email' | 'password'>
 const loginSchema = schema.pick(['email', 'password'])
@@ -24,6 +25,7 @@ export default function Login() {
   const loginAccountMutation = useMutation({
     mutationFn: (body: FormData) => authApi.login(body)
   })
+
   const onSubmit = handleSubmit((data) => {
     loginAccountMutation.mutate(data, {
       onSuccess: (data) => {
@@ -36,17 +38,20 @@ export default function Login() {
   })
 
   return (
-    <div className="bg-[url('src/assets/images/background.jpg')] bg-cover bg-center">
-      <div className='container'>
-        <div className='grid grid-cols-1 py-12 lg:grid-cols-6 lg:py-40'>
-          <div className='lg:col-span-2 lg:col-start-5'>
-            <form className='rounded bg-white p-10 shadow-sm' onSubmit={onSubmit} noValidate>
-              <div className='text-2xl'>Log in</div>
+    <div className='bg-blue bg-cover bg-center'>
+      <div className='container max-w-7xl mx-auto'>
+        <div className='grid grid-cols-2 py-12'>
+          <div className='col-span-1 flex justify-center items-center'>
+            <img src={background} alt='logo'></img>
+          </div>
+          <div className='col-span-1 rounded m-10 bg-white shadow-sm flex items-center p-10'>
+            <form className='w-full' onSubmit={onSubmit} noValidate>
+              <div className='text-2xl font-semibold'>Log in</div>
               <Input
                 name='email'
                 register={register}
                 type='email'
-                className='mt-8'
+                className='mt-10'
                 errorMessage={errors.email?.message}
                 placeholder='Email'
               />
@@ -54,24 +59,30 @@ export default function Login() {
                 name='password'
                 register={register}
                 type='password'
-                className='mt-2'
+                className='mt-5'
                 classNameEye='absolute right-[5px] h-5 w-5 cursor-pointer top-[12px]'
                 errorMessage={errors.password?.message}
                 placeholder='Password'
                 autoComplete='on'
               />
-              <div className='mt-3'>
+              <div className='mt-5'>
                 <Button
                   type='submit'
-                  className='flex round w-full items-center justify-center bg-blue-500 py-4 px-2 text-sm uppercase text-white hover:bg-blue-600'
+                  className='flex round w-full items-center justify-center bg-blue py-4 px-2 text-sm uppercase text-white'
                 >
                   Submit
                 </Button>
               </div>
-              <div className='mt-8 flex items-center justify-center'>
+              <div className='mt-10 flex items-center justify-center'>
                 <span className='text-gray-400'>No account?</span>
-                <Link className='ml-1 text-red-400' to='/register'>
+                <Link className='ml-1 text-red' to='/register'>
                   Create one
+                </Link>
+              </div>
+              <div className='mt-5 flex items-center justify-center'>
+                <span className='text-gray-400'>Forgot your password?</span>
+                <Link className='ml-1 text-red' to='/reset-password'>
+                  Get help
                 </Link>
               </div>
             </form>

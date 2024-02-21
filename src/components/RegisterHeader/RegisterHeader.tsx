@@ -8,7 +8,7 @@ export default function RegisterHeader() {
       <div className='container'>
         <nav className='flex items-start'>
           <Link to='/'>
-            <img src={logo} alt='logo'></img>
+            <img src={logo} alt='logo' className='w-12 h-12'></img>
           </Link>
         </nav>
       </div>

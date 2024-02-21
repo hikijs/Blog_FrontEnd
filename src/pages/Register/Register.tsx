@@ -2,13 +2,14 @@ import Input from 'src/components/Input'
 import Button from 'src/components/Button'
 import DateSelect from 'src/components/DateSelect/DateSelect'
 import authApi from 'src/apis/auth.api'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { schema, Schema } from 'src/utils/rules'
-import { omit, _ } from 'lodash'
+import _, { omit } from 'lodash'
 import moment from 'moment'
+import background from 'src/assets/images/background.jpg'
 
 type FormData = Pick<Schema, 'email' | 'username' | 'birth' | 'password' | 'confirm_password'>
 const registerSchema = schema.pick(['email', 'username', 'birth', 'password', 'confirm_password'])
@@ -24,6 +25,8 @@ export default function Register() {
     resolver: yupResolver(registerSchema)
   })
 
+  const navigate = useNavigate()
+
   const registerAccountMutation = useMutation({
     mutationFn: (body: Omit<FormData, 'confirm_password'>) => authApi.register(body)
   })
@@ -37,6 +40,7 @@ export default function Register() {
     const body = omit(data, ['confirm_password'])
     registerAccountMutation.mutate(body, {
       onSuccess: (data) => {
+        navigate('/')
         console.log(data)
       },
       onError: (error) => {
@@ -44,13 +48,17 @@ export default function Register() {
       }
     })
   })
+
   return (
-    <div className="bg-[url('src/assets/images/background.jpg')] bg-cover bg-center">
-      <div className='container'>
-        <div className='grid grid-cols-1 py-12 lg:grid-cols-5 lg:py-20'>
-          <div className='lg:col-span-2 lg:col-start-4'>
-            <form className='rounded bg-white p-10 shadow-sm' onSubmit={onSubmit} noValidate>
-              <div className='text-2xl'>Sign in</div>
+    <div className='bg-blue bg-cover bg-center'>
+      <div className='container max-w-7xl mx-auto'>
+        <div className='grid grid-cols-2 py-8'>
+          <div className='col-span-1 flex justify-center items-center'>
+            <img src={background} alt='logo'></img>
+          </div>
+          <div className='col-span-1 rounded m-10 bg-white shadow-sm flex items-center p-10'>
+            <form className='w-full' onSubmit={onSubmit} noValidate>
+              <div className='text-2xl font-semibold'>Sign in</div>
               <Input
                 name='email'
                 register={register}
@@ -94,15 +102,14 @@ export default function Register() {
                 placeholder='Confirm Password'
                 autoComplete='on'
               />
-
               <div className='mt-2'>
-                <Button className='flex w-full items-center justify-center bg-blue-500 py-4 px-2 text-sm uppercase text-white hover:bg-blue-600'>
+                <Button className='flex round w-full items-center justify-center bg-blue py-4 px-2 text-sm uppercase text-white'>
                   Sign in
                 </Button>
               </div>
-              <div className='mt-8 flex items-center justify-center'>
+              <div className='mt-5 flex items-center justify-center'>
                 <span className='text-gray-400'>Already have account?</span>
-                <Link className='ml-1 text-red-400' to='/login'>
+                <Link className='ml-1 text-red' to='/login'>
                   Log in
                 </Link>
               </div>
