@@ -1,14 +1,11 @@
-import React from 'react'
-import LikeIcon from 'src/assets/images/like-icon.png'
-import avatarIcon from 'src/assets/images/demo-avatar.jpeg'
-import thumbnailImage from 'src/assets/images/demo-thumbnail.jpeg'
+import { demo_images, icon_images } from 'src/utils/icons'
 
 export default function PostCard() {
   return (
     <div className='w-5/6 py-5 justify-start border-b border-lightBlue'>
       <div className='flex justify-start items-center gap-2 py-1'>
         <img
-          src={avatarIcon}
+          src={demo_images.avatarDemo}
           alt='avatar-icon'
           className='w-8 h-8 rounded-full border border-lightBlue cursor-pointer'
         ></img>
@@ -27,7 +24,7 @@ export default function PostCard() {
           </div>
         </div>
         <div className='col-span-1 flex items-center'>
-          <img src={thumbnailImage} alt='avatar-icon' className='w-auto h-full cursor-pointer'></img>
+          <img src={demo_images.thumbnailDemo} alt='avatar-icon' className='w-auto h-full cursor-pointer'></img>
         </div>
       </div>
       <div className='grid grid-cols-4 gap-4 py-1'>
@@ -35,7 +32,7 @@ export default function PostCard() {
           <button className='rounded-full py-1 px-2 border border-lightBlue hover:bg-lightBlue'>
             <div className='text-base font-medium hover:text-white'>Data Source</div>
           </button>
-          <img src={LikeIcon} alt='avatar-icon' className='w-7 h-7 cursor-pointer'></img>
+          <img src={icon_images.likeIcon} alt='avatar-icon' className='w-7 h-7 cursor-pointer'></img>
         </div>
         <div className='col-span-1'></div>
       </div>

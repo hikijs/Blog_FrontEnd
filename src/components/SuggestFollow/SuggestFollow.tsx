@@ -1,11 +1,10 @@
-import avatarIcon from 'src/assets/images/demo-avatar.jpeg'
-
+import { demo_images } from 'src/utils/icons'
 export default function SuggestFollow() {
   return (
     <div className='grid grid-cols-6 py-2 gap-2'>
       <div className='col-span-1 flex justify-start items-start'>
         <img
-          src={avatarIcon}
+          src={demo_images.avatarDemo}
           alt='avatar-icon'
           className='w-8 h-8 object-cover rounded-full border border-lightBlue'
         ></img>

@@ -1,11 +1,10 @@
-import avatarIcon from 'src/assets/images/demo-avatar.jpeg'
-
+import { demo_images } from 'src/utils/icons'
 export default function RecentlySaved() {
   return (
     <div className='py-2'>
       <div className='flex justify-start gap-6 py-2'>
         <img
-          src={avatarIcon}
+          src={demo_images.avatarDemo}
           alt='avatar-icon'
           className='w-8 h-8 object-cover rounded-full border border-lightBlue'
         ></img>

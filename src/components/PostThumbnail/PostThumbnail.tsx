@@ -1,12 +1,10 @@
-import thumbnail from 'src/assets/images/demo-thumbnail.jpeg'
-import avatarIcon from 'src/assets/images/demo-avatar.jpeg'
-
+import { demo_images } from 'src/utils/icons'
 export default function PostThumbnail() {
   return (
     <div className='relative h-96'>
       <div
         className='absolute top-0 left-0 h-full w-full bg-cover bg-center flex items-center'
-        style={{ backgroundImage: `url(${thumbnail})` }}
+        style={{ backgroundImage: `url(${demo_images.thumbnailDemo})` }}
       ></div>
       <div className='absolute top-0 left-0 h-full w-full bg-black opacity-40'></div>
       <div className='absolute top-0 left-0 h-full w-full flex items-center'>
@@ -19,7 +17,7 @@ export default function PostThumbnail() {
           </div>
           <div className='flex justify-around items-center gap-2 cursor-pointer'>
             <img
-              src={avatarIcon}
+              src={demo_images.avatarDemo}
               alt='avatar-icon'
               className='w-8 h-8 rounded-full border border-lightBlue cursor-pointer'
             ></img>

@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { schema, Schema } from 'src/utils/rules'
 import { useMutation } from '@tanstack/react-query'
 import authApi from 'src/apis/auth.api'
-import background from 'src/assets/images/background.jpg'
+import { bg_images } from 'src/utils/icons'
 
 type FormData = Pick<Schema, 'email' | 'password'>
 const loginSchema = schema.pick(['email', 'password'])
@@ -42,7 +42,7 @@ export default function Login() {
       <div className='container max-w-7xl mx-auto'>
         <div className='grid grid-cols-2 py-12'>
           <div className='col-span-1 flex justify-center items-center'>
-            <img src={background} alt='logo'></img>
+            <img src={bg_images.mainBackground} alt='logo'></img>
           </div>
           <div className='col-span-1 rounded m-10 bg-white shadow-sm flex items-center p-10'>
             <form className='w-full' onSubmit={onSubmit} noValidate>

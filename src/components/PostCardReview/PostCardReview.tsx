@@ -1,13 +1,10 @@
-import LikeIcon from 'src/assets/images/like-icon.png'
-import avatarIcon from 'src/assets/images/demo-avatar.jpeg'
-import thumbnailImage from 'src/assets/images/demo-thumbnail.jpeg'
-
+import { demo_images, icon_images } from 'src/utils/icons'
 export default function PostCardReview() {
   return (
     <div className='w-full py-5 mb-2 justify-start border-b border-lightBlue'>
       <div className='flex justify-start items-center gap-2 py-1'>
         <img
-          src={avatarIcon}
+          src={demo_images.avatarDemo}
           alt='avatar-icon'
           className='w-6 h-6 rounded-full border border-lightBlue cursor-pointer'
         ></img>
@@ -26,7 +23,7 @@ export default function PostCardReview() {
           </div>
         </div>
         <div className='col-span-1 flex items-center'>
-          <img src={thumbnailImage} alt='avatar-icon' className='w-auto h-full cursor-pointer'></img>
+          <img src={demo_images.thumbnailDemo} alt='avatar-icon' className='w-auto h-full cursor-pointer'></img>
         </div>
       </div>
       <div className='grid grid-cols-4 gap-4 py-1'>
@@ -34,7 +31,7 @@ export default function PostCardReview() {
           <button className='rounded-full py-1 px-2 border border-lightBlue hover:bg-lightBlue'>
             <div className='text-sm font-medium hover:text-white'>Data Source</div>
           </button>
-          <img src={LikeIcon} alt='avatar-icon' className='w-5 h-5 cursor-pointer'></img>
+          <img src={icon_images.likeIcon} alt='avatar-icon' className='w-5 h-5 cursor-pointer'></img>
         </div>
         <div className='col-span-1'></div>
       </div>

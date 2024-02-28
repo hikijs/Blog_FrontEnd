@@ -1,7 +1,7 @@
 import PostCard from 'src/components/PostCard'
-import avatarIcon from 'src/assets/images/demo-avatar.jpeg'
 import FollowingCard from 'src/components/FollowingCard'
 import EditProfilePanel from 'src/components/EditProfilePanel'
+import { demo_images } from 'src/utils/icons'
 
 export default function Profile() {
   return (
@@ -22,7 +22,7 @@ export default function Profile() {
             <div className='container'>
               <div className='flex flex-col justify-start'>
                 <img
-                  src={avatarIcon}
+                  src={demo_images.avatarDemo}
                   alt='avatar-icon'
                   className='w-28 h-28 rounded-full border border-lightBlue cursor-pointer'
                 ></img>

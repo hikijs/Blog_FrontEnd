@@ -1,4 +1,4 @@
-import avatarIcon from 'src/assets/images/demo-avatar.jpeg'
+import { demo_images } from 'src/utils/icons'
 import { Comment as CommentType } from 'src/types/comment.type'
 import { useState } from 'react'
 interface Props {
@@ -18,7 +18,7 @@ export default function CommentInput(props: Props) {
     <div className='border border-lightBlue p-5 w-full rounded-lg'>
       <div className='flex justify-start items-center gap-2 py-2'>
         <img
-          src={avatarIcon}
+          src={demo_images.avatarDemo}
           alt='avatar-icon'
           className='w-8 h-8 object-cover rounded-full border border-lightBlue'
         ></img>

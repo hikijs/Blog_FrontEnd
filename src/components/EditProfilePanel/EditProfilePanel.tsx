@@ -1,5 +1,4 @@
-import avatarIcon from 'src/assets/images/demo-avatar.jpeg'
-
+import { demo_images } from 'src/utils/icons'
 export default function EditProfilePanel() {
   return (
     <div className='container'>
@@ -11,7 +10,7 @@ export default function EditProfilePanel() {
           <div className='grid grid-cols-6 pb-4 gap-1'>
             <div className='col-span-1 flex items-center'>
               <img
-                src={avatarIcon}
+                src={demo_images.avatarDemo}
                 alt='avatar-icon'
                 className='w-16 h-16 rounded-full border border-lightBlue cursor-pointer'
               ></img>

@@ -1,7 +1,4 @@
-import likeIcon from 'src/assets/images/like-icon.png'
-import commentIcon from 'src/assets/images/comment-icon.png'
-import libraryIcon from 'src/assets/images/library-icon.png'
-
+import { icon_images } from 'src/utils/icons'
 interface Props {
   setShowCommentPanel: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -15,7 +12,7 @@ export default function PostInteract(props: Props) {
         <div className='border-y border-lightBlue py-5 flex justify-between items-center'>
           <div className='flex justify-start gap-5'>
             <div className='flex justify-start items-center gap-2 cursor-pointer'>
-              <img src={likeIcon} alt='alert-icon' className='w-6 h-6'></img>
+              <img src={icon_images.likeIcon} alt='alert-icon' className='w-6 h-6'></img>
               <div className='text-base font-light'>10</div>
             </div>
             <button
@@ -24,12 +21,12 @@ export default function PostInteract(props: Props) {
                 setShowCommentPanel(true)
               }}
             >
-              <img src={commentIcon} alt='alert-icon' className='w-6 h-6'></img>
+              <img src={icon_images.commentIcon} alt='alert-icon' className='w-6 h-6'></img>
               <div className='text-base font-light'>5</div>
             </button>
           </div>
           <div className='flex justify-end items-center cursor-pointer'>
-            <img src={libraryIcon} alt='alert-icon' className='w-7 h-7'></img>
+            <img src={icon_images.libraryIcon} alt='alert-icon' className='w-7 h-7'></img>
           </div>
         </div>
       </div>

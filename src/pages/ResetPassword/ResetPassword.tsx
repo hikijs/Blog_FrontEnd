@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import Input from 'src/components/Input'
 import Button from 'src/components/Button'
-import background from 'src/assets/images/background.jpg'
+import { bg_images } from 'src/utils/icons'
 
 export default function ResetPassword() {
   return (
@@ -9,7 +9,7 @@ export default function ResetPassword() {
       <div className='container max-w-7xl mx-auto'>
         <div className='grid grid-cols-2 py-2'>
           <div className='col-span-1 flex justify-center items-center'>
-            <img src={background} alt='logo'></img>
+            <img src={bg_images.mainBackground} alt='logo'></img>
           </div>
           <div className='col-span-1 rounded m-10 bg-white shadow-sm flex items-center p-10'>
             <form className='w-full' noValidate>
