@@ -26,8 +26,12 @@ import { TextButtons } from './Selector/TypeTextSelector'
 import { slashCommand, suggestionItems } from './Utils/SlashCommand'
 
 const extensions = [...defaultExtensions, slashCommand]
-
-const NewPostEditor = () => {
+interface Props {
+  showPublishPanel: boolean
+  setShowPublishPanel: React.Dispatch<React.SetStateAction<boolean>>
+}
+const NewPostEditor = (props: Props) => {
+  const { showPublishPanel, setShowPublishPanel } = props
   const [initialContent, setInitialContent] = useState<null | JSONContent>(null)
   const [saveStatus, setSaveStatus] = useState('Saved')
 
@@ -52,9 +56,17 @@ const NewPostEditor = () => {
 
   return (
     <div className='relative w-full'>
-      <div className='absolute right-5 top-5 z-10 mb-5 rounded-lg bg-accent px-2 py-1 text-sm text-muted-foreground'>
-        {saveStatus}
-      </div>
+      {!showPublishPanel && (
+        <div className='absolute right-5 top-5 z-10 mb-5 rounded-lg bg-accent px-2 py-1 text-sm text-muted-foreground flex gap-5 items-center'>
+          {saveStatus}
+          <button
+            className='py-2 px-4 font-thin text-sm bg-white border border-lightBlue rounded-full hover:bg-lightBlue hover:text-white'
+            onClick={() => setShowPublishPanel(true)}
+          >
+            Publish
+          </button>
+        </div>
+      )}
       <EditorRoot>
         <EditorContent
           initialContent={initialContent}

@@ -1,7 +1,11 @@
 import PostCardReview from '../PostCardReview'
 import CategoriesPanel from '../CategoriesPanel'
-
-export default function PublishPost() {
+import { icon_svg } from 'src/utils/icons'
+interface Props {
+  setShowPublishPanel: React.Dispatch<React.SetStateAction<boolean>>
+}
+export default function PublishPost(props: Props) {
+  const { setShowPublishPanel } = props
   return (
     <div className='container'>
       <div className='absolute top-0 left-0 h-full w-full bg-white'></div>
@@ -30,7 +34,15 @@ export default function PublishPost() {
               <PostCardReview />
             </div>
           </div>
-          <div className='col-span-1'>
+          <div className='col-span-1 relative'>
+            <button
+              className='absolute top-0 right-0'
+              onClick={() => {
+                setShowPublishPanel(false)
+              }}
+            >
+              <icon_svg.xCircle className='w-8 h-8 cursor-pointer' />
+            </button>
             <div className='flex justify-start gap-2 my-4'>
               <div className='text-base font-thin'>Publishing to</div>
               <div className='text-base font-semibold'>Kioku</div>

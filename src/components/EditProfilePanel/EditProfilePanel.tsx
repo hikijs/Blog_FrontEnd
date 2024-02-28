@@ -1,10 +1,23 @@
-import { demo_images } from 'src/utils/icons'
-export default function EditProfilePanel() {
+import { demo_images, icon_svg } from 'src/utils/icons'
+
+interface Props {
+  setShowEditPanel: React.Dispatch<React.SetStateAction<boolean>>
+}
+export default function EditProfilePanel(props: Props) {
+  const { setShowEditPanel } = props
   return (
     <div className='container'>
       <div className='absolute top-0 left-0 h-full w-full bg-black opacity-10'></div>
       <div className='absolute top-0 left-0 h-full w-full flex items-center justify-center'>
-        <div className='container p-14 w-1/3 shadow-2xl bg-white'>
+        <div className='relative container p-14 w-1/3 shadow-2xl bg-white'>
+          <button
+            className='absolute top-8 right-8'
+            onClick={() => {
+              setShowEditPanel(false)
+            }}
+          >
+            <icon_svg.xCircle className='w-8 h-8 cursor-pointer' />
+          </button>
           <div className='flex justify-center text-2xl font-semibold pb-5'>Profile Information</div>
           <div className='flex justify-start text-base font-medium py-2'>Photo</div>
           <div className='grid grid-cols-6 pb-4 gap-1'>

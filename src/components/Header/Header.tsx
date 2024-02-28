@@ -46,10 +46,13 @@ export default function Header() {
             </div>
           </form>
           <div className='col-span-3 col-start-10 grid grid-cols-6 items-center gap-5'>
-            <div className='col-span-2 py-1 flex justify-end gap-3 hover:text-gray-900 cursor-pointer items-center'>
+            <Link
+              to='/new-story'
+              className='col-span-2 py-1 flex justify-end gap-3 hover:text-gray-900 cursor-pointer items-center'
+            >
               <img src={icon_images.writeIcon} alt='write-icon' className='w-8 h-8'></img>
               <span>Write</span>
-            </div>
+            </Link>
             <div className='col-span-2 py-1 flex justify-end gap-3 hover:text-gray-900 cursor-pointer items-center'>
               <img src={icon_images.alertIcon} alt='alert-icon' className='w-8 h-8'></img>
               <span>Alert</span>
@@ -59,7 +62,7 @@ export default function Header() {
               renderPopover={
                 <div className='drop-shadow-md'>
                   <Link
-                    to='/'
+                    to='/profile'
                     className='block w-full bg-white py-4 px-4 text-left hover:bg-slate-100 hover:text-cyan-500'
                   >
                     <div className='flex justify-start pr-28 gap-2'>

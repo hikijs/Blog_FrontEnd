@@ -2,8 +2,10 @@ import PostCard from 'src/components/PostCard'
 import FollowingCard from 'src/components/FollowingCard'
 import EditProfilePanel from 'src/components/EditProfilePanel'
 import { demo_images } from 'src/utils/icons'
+import { useState } from 'react'
 
 export default function Profile() {
+  const [showEditPanel, setShowEditPanel] = useState(false)
   return (
     <div>
       <div className='relative container max-w-7xl mx-auto'>
@@ -31,18 +33,25 @@ export default function Profile() {
                   3 follower
                 </div>
               </div>
-              <div className='text-1xl font-thin my-10 hover:underline text-lightBlue cursor-pointer'>Edit profile</div>
+              <button
+                className='text-1xl font-thin my-10 hover:underline text-lightBlue cursor-pointer'
+                onClick={() => setShowEditPanel(true)}
+              >
+                Edit profile
+              </button>
               <div className='text-2xl font-semibold py-2'>Following</div>
               <FollowingCard />
               <FollowingCard />
               <FollowingCard />
               <FollowingCard />
-              <div className='text-base font-base text-lightBlue py-4'>See all (20)</div>
+              <div className='text-base font-base text-lightBlue py-4 hover:underline hover:text-lightBlue cursor-pointer'>
+                See all (20)
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <EditProfilePanel />
+      {showEditPanel && <EditProfilePanel setShowEditPanel={setShowEditPanel} />}
     </div>
   )
 }

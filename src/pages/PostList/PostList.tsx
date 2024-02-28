@@ -18,12 +18,16 @@ export default function PostList() {
             <SuggestFollow />
             <SuggestFollow />
             <SuggestFollow />
-            <div className='text-base font-base text-lightBlue py-4'>See more suggestions (20)</div>
+            <div className='text-base font-base text-lightBlue py-4 hover:underline hover:text-lightBlue cursor-pointer'>
+              See more suggestions (20)
+            </div>
             <div className='text-2xl font-semibold py-6'>Recently Saved</div>
             <RecentlySaved />
             <RecentlySaved />
             <RecentlySaved />
-            <div className='text-base font-base text-lightBlue py-4'>See all (20)</div>
+            <div className='text-base font-base text-lightBlue py-4 hover:underline hover:text-lightBlue cursor-pointer'>
+              See all (20)
+            </div>
           </div>
         </div>
       </div>
