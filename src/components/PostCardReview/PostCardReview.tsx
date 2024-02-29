@@ -1,4 +1,4 @@
-import { demo_images, icon_images } from 'src/utils/icons'
+import { demo_images, icon_svg } from 'src/utils/icons'
 export default function PostCardReview() {
   return (
     <div className='w-full py-5 mb-2 justify-start border-b border-lightBlue'>
@@ -31,7 +31,7 @@ export default function PostCardReview() {
           <button className='rounded-full py-1 px-2 border border-lightBlue hover:bg-lightBlue'>
             <div className='text-sm font-medium hover:text-white'>Data Source</div>
           </button>
-          <img src={icon_images.likeIcon} alt='avatar-icon' className='w-5 h-5 cursor-pointer'></img>
+          <icon_svg.bookmark className='w-5 h-5 cursor-pointer hover:text-lightBlue' />
         </div>
         <div className='col-span-1'></div>
       </div>

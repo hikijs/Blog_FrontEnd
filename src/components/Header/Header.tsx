@@ -1,17 +1,8 @@
 import { Link } from 'react-router-dom'
-import { useRef } from 'react'
 import Popover from '../Popover'
-import { demo_images, icon_images } from 'src/utils/icons'
+import { demo_images, icon_images, icon_svg } from 'src/utils/icons'
 
 export default function Header() {
-  const searchIconRef = useRef<HTMLImageElement>(null)
-
-  const changeStyleIcon = (iconRef: React.RefObject<HTMLImageElement>, icon: string) => {
-    if (iconRef.current) {
-      iconRef.current.src = icon
-    }
-  }
-
   return (
     <div className='bg-white py-5 text-gray-500 border-b border-lightBlue'>
       <div className='container'>
@@ -27,38 +18,25 @@ export default function Header() {
                 className='text-black px-3 py-2 flex-grow border-none outline-none bg-transparent'
                 placeholder='Search ...'
               />
-              <button
-                className='rounded-sm py-1 px-6 flex-shrink-0'
-                onClick={() => {
-                  changeStyleIcon(searchIconRef, icon_images.selectedSearchIcon)
-                }}
-              >
-                <img
-                  ref={searchIconRef}
-                  src={icon_images.searchIcon}
-                  alt='logo'
-                  className='w-6 h-6'
-                  onMouseLeave={() => {
-                    changeStyleIcon(searchIconRef, icon_images.searchIcon)
-                  }}
-                ></img>
+              <button className='rounded-sm py-1 px-6 flex-shrink-0'>
+                <icon_svg.search className='w-6 h-6 hover:text-lightBlue' />
               </button>
             </div>
           </form>
           <div className='col-span-3 col-start-10 grid grid-cols-6 items-center gap-5'>
             <Link
               to='/new-story'
-              className='col-span-2 py-1 flex justify-end gap-3 hover:text-gray-900 cursor-pointer items-center'
+              className='col-span-2 py-1 flex justify-end gap-2 hover:text-gray-900 cursor-pointer items-center hover:text-lightBlue'
             >
-              <img src={icon_images.writeIcon} alt='write-icon' className='w-8 h-8'></img>
+              <icon_svg.write className='w-8 h-8' />
               <span>Write</span>
             </Link>
-            <div className='col-span-2 py-1 flex justify-end gap-3 hover:text-gray-900 cursor-pointer items-center'>
-              <img src={icon_images.alertIcon} alt='alert-icon' className='w-8 h-8'></img>
+            <div className='col-span-2 py-1 flex justify-end gap-2 hover:text-gray-900 cursor-pointer items-center hover:text-lightBlue'>
+              <icon_svg.bellAlert className='w-8 h-8 ' />
               <span>Alert</span>
             </div>
             <Popover
-              className='col-span-2 flex items-center justify-end py-1 hover:text-gray-900 cursor-pointer'
+              className='col-span-2 flex items-center justify-end py-1 hover:text-gray-900 cursor-pointer '
               renderPopover={
                 <div className='drop-shadow-md'>
                   <Link
@@ -66,7 +44,7 @@ export default function Header() {
                     className='block w-full bg-white py-4 px-4 text-left hover:bg-slate-100 hover:text-cyan-500'
                   >
                     <div className='flex justify-start pr-28 gap-2'>
-                      <img src={icon_images.profileIcon} alt='profile-icon' className='w-5 h-5'></img>
+                      <icon_svg.user className='w-5 h-5' />
                       <span className='mx-1'>Profile</span>
                     </div>
                   </Link>
@@ -75,7 +53,7 @@ export default function Header() {
                     className='block w-full bg-white py-4 px-4 text-left hover:bg-slate-100 hover:text-cyan-500'
                   >
                     <div className='flex justify-start pr-28 gap-2'>
-                      <img src={icon_images.libraryIcon} alt='library-icon' className='w-5 h-5'></img>
+                      <icon_svg.bookmark className='w-5 h-5' />
                       <span className='mx-1'>Library</span>
                     </div>
                   </Link>
@@ -84,13 +62,12 @@ export default function Header() {
                     className='block w-full bg-white pt-4 pb-6 px-4 text-left hover:bg-slate-100 hover:text-cyan-500'
                   >
                     <div className='flex justify-start pr-28 gap-2'>
-                      <img src={icon_images.storyIcon} alt='story-icon' className='w-5 h-5'></img>
+                      <icon_svg.bookOpen className='w-5 h-5' />
                       <span className='mx-1'>Stories</span>
                     </div>
                   </Link>
                   <button className='block w-full bg-white py-4 px-4 text-left hover:bg-slate-100 hover:text-cyan-500 border-t border-lightBlue'>
-                    <div className='flex items-center gap-2'>
-                      <img src={icon_images.logOutIcon} alt='logout-icon' className='w-5 h-5'></img>
+                    <div className='flex items-center'>
                       <span className='mx-1'>Log out</span>
                     </div>
                   </button>

@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import { demo_images, icon_images } from 'src/utils/icons'
+import { demo_images, icon_svg } from 'src/utils/icons'
 import { Comment as CommentType } from 'src/types/comment.type'
 import CommentInput from '../CommentInput'
-import { icon_svg } from 'src/utils/icons'
 interface Props {
   comment: CommentType
 }
@@ -19,7 +18,7 @@ export default function CommentShow(props: Props) {
   }
 
   return (
-    <div className='py-2 pl-4 border-l border-b border-lightBlue rounded-md min-w-64 overflow-x-auto'>
+    <div className='py-2 pl-4 border-l border-b border-lightBlue rounded-l-md min-w-64 overflow-x-auto'>
       <div className='flex justify-start items-center gap-4 py-2'>
         <img
           src={demo_images.avatarDemo}
@@ -34,7 +33,7 @@ export default function CommentShow(props: Props) {
       <div className='flex justify-start my-2 text-justify text-sm'>{comment.comment}</div>
       <div className='flex justify-between items-center py-3'>
         <div className='flex justify-start gap-5'>
-          <img src={icon_images.likeIcon} alt='alert-icon' className='w-6 h-6 cursor-pointer'></img>
+          <icon_svg.heart className='w-6 h-6 cursor-pointer hover:text-lightBlue' />
           {comments.length > 0 && (
             <button
               className='flex justify-start items-center gap-2'
@@ -42,7 +41,7 @@ export default function CommentShow(props: Props) {
                 setShowChildComments(!showChildComments)
               }}
             >
-              <img src={icon_images.commentIcon} alt='comment-icon' className='w-6 h-6 cursor-pointer'></img>
+              <icon_svg.comment className='w-6 h-6 cursor-pointer hover:text-lightBlue' />
               {showChildComments ? <icon_svg.chevronDown className='w-6 h-6' /> : <div>{comments.length}</div>}
             </button>
           )}
