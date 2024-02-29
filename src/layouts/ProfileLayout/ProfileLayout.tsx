@@ -1,25 +1,22 @@
-import PostCard from 'src/components/PostCard'
+import Footer from 'src/components/Footer'
+import Header from 'src/components/Header'
 import FollowingCard from 'src/components/FollowingCard'
 import EditProfilePanel from 'src/components/EditProfilePanel'
 import { demo_images } from 'src/utils/icons'
 import { useState } from 'react'
 
-export default function Profile() {
+interface Props {
+  children?: React.ReactNode
+}
+export default function ProfileLayout({ children }: Props) {
   const [showEditPanel, setShowEditPanel] = useState(false)
+
   return (
     <div>
-      <div className='relative container max-w-7xl mx-auto'>
+      <Header />
+      <div className='container max-w-7xl mx-auto'>
         <div className='grid grid-cols-3'>
-          <div className='col-span-2 p-2'>
-            <div className='text-5xl font-black py-5'>Kioku</div>
-            <div className='flex justify-start pb-10 gap-10'>
-              <div className='text-base font-normal py-3 cursor-pointer'>Home</div>
-              <div className='text-base font-normal py-3 cursor-pointer border-b border-lightBlue'>Saved</div>
-            </div>
-            <PostCard />
-            <PostCard />
-            <PostCard />
-          </div>
+          <div className='col-span-2 p-2'>{children}</div>
           <div className='col-span-1 p-5'>
             <div className='container'>
               <div className='flex flex-col justify-start'>
@@ -49,9 +46,10 @@ export default function Profile() {
               </div>
             </div>
           </div>
+          {showEditPanel && <EditProfilePanel setShowEditPanel={setShowEditPanel} />}
         </div>
       </div>
-      {showEditPanel && <EditProfilePanel setShowEditPanel={setShowEditPanel} />}
+      <Footer />
     </div>
   )
 }

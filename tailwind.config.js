@@ -17,6 +17,10 @@ module.exports = {
         black: '#000000',
         orange: '#ee4d2d',
         lightBlue: '#7EB6D9'
+      },
+      flexBasis: {
+        '1/15': '15%',
+        '1/20': '5%'
       }
     }
   },

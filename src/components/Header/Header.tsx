@@ -62,7 +62,7 @@ export default function Header() {
               renderPopover={
                 <div className='drop-shadow-md'>
                   <Link
-                    to='/profile'
+                    to='/profile/about'
                     className='block w-full bg-white py-4 px-4 text-left hover:bg-slate-100 hover:text-cyan-500'
                   >
                     <div className='flex justify-start pr-28 gap-2'>
@@ -71,7 +71,7 @@ export default function Header() {
                     </div>
                   </Link>
                   <Link
-                    to='/'
+                    to='/profile/list'
                     className='block w-full bg-white py-4 px-4 text-left hover:bg-slate-100 hover:text-cyan-500'
                   >
                     <div className='flex justify-start pr-28 gap-2'>
@@ -80,7 +80,7 @@ export default function Header() {
                     </div>
                   </Link>
                   <Link
-                    to='/'
+                    to='/profile/story'
                     className='block w-full bg-white pt-4 pb-6 px-4 text-left hover:bg-slate-100 hover:text-cyan-500'
                   >
                     <div className='flex justify-start pr-28 gap-2'>

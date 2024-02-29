@@ -25,6 +25,8 @@ import chevronLeft from 'src/assets/images/icon-svg/chevron-left'
 import chevronRight from 'src/assets/images/icon-svg/chevron-right'
 import xCircle from 'src/assets/images/icon-svg/x-circle'
 import ellipsisHorizontal from 'src/assets/images/icon-svg/ellipsis-horizontal'
+import bookOpen from 'src/assets/images/icon-svg/book-open'
+import photo from 'src/assets/images/icon-svg/photo'
 
 export const icon_images = {
   likeIcon,
@@ -55,7 +57,9 @@ export const bg_images = {
   notFoundBackground
 }
 export const icon_svg = {
+  photo,
   xCircle,
+  bookOpen,
   chevronDown,
   chevronLeft,
   chevronRight,
