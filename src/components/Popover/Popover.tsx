@@ -32,7 +32,7 @@ export default function Popover({
   renderPopover,
   as: Element = 'div',
   initialOpen,
-  placement = 'bottom'
+  placement = 'bottom-end'
 }: Props) {
   const [open, setOpen] = useState(initialOpen || false)
   const arrowRef = useRef<HTMLElement>(null)

@@ -1,14 +1,29 @@
 import { Link } from 'react-router-dom'
+import { Fragment, useState } from 'react'
 import Popover from '../Popover'
-import { demo_images, icon_images, icon_svg } from 'src/utils/icons'
+import { demo_images } from 'src/utils/icons'
 
 export default function Header() {
+  const [isSelectedTab, setIsSelectedTab] = useState({
+    writeTab: false,
+    chatTab: false,
+    notificationsTab: false
+  })
+
+  const changeSelectedTab = (tab?: string) => {
+    setIsSelectedTab({
+      writeTab: tab === 'write' ? true : false,
+      chatTab: tab === 'chat' ? true : false,
+      notificationsTab: tab === 'notification' ? true : false
+    })
+  }
+
   return (
     <div className='bg-white py-5 text-gray-500 border-b border-lightBlue'>
       <div className='container'>
         <div className='grid grid-cols-12 items-center gap-10'>
           <Link className='col-span-1' to='/'>
-            <img src={icon_images.logoIcon} alt='logo-icon' className='w-12 h-12'></img>
+            <div className='w-16 h-16 bg-logo-icon bg-cover'></div>
           </Link>
           <form className='col-span-5 col-start-2'>
             <div className='border-2 border-lightBlue rounded-full p-1 flex'>
@@ -18,33 +33,87 @@ export default function Header() {
                 className='text-black px-3 py-2 flex-grow border-none outline-none bg-transparent'
                 placeholder='Search ...'
               />
-              <button className='rounded-sm py-1 px-6 flex-shrink-0'>
-                <icon_svg.search className='w-6 h-6 hover:text-lightBlue' />
+              <button className='rounded-sm py-1 px-3 flex-shrink-0'>
+                <div className='w-8 h-8 bg-search-icon hover:bg-highlight-search-icon bg-cover'></div>
               </button>
             </div>
           </form>
-          <div className='col-span-3 col-start-10 grid grid-cols-6 items-center gap-5'>
+          <div className='col-span-4 col-start-9 flex justify-between items-center'>
             <Link
               to='/new-story'
-              className='col-span-2 py-1 flex justify-end gap-2 hover:text-gray-900 cursor-pointer items-center hover:text-lightBlue'
+              className='flex flex-col items-center gap-1 cursor-pointer'
+              onMouseEnter={() => {
+                changeSelectedTab('write')
+              }}
+              onMouseLeave={() => {
+                changeSelectedTab()
+              }}
             >
-              <icon_svg.write className='w-8 h-8' />
-              <span>Write</span>
+              {isSelectedTab.writeTab ? (
+                <Fragment>
+                  <div className='w-8 h-8 bg-highlight-write-icon bg-cover'></div>
+                  <span className='text-sm text-lightBlue'>New Story</span>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <div className='w-8 h-8 bg-write-icon bg-cover'></div>
+                  <span className='text-sm'>New Story</span>
+                </Fragment>
+              )}
             </Link>
-            <div className='col-span-2 py-1 flex justify-end gap-2 hover:text-gray-900 cursor-pointer items-center hover:text-lightBlue'>
-              <icon_svg.bellAlert className='w-8 h-8 ' />
-              <span>Alert</span>
+            <Link
+              to='/new-story'
+              className='flex flex-col items-center gap-1 cursor-pointer'
+              onMouseEnter={() => {
+                changeSelectedTab('chat')
+              }}
+              onMouseLeave={() => {
+                changeSelectedTab()
+              }}
+            >
+              {isSelectedTab.chatTab ? (
+                <Fragment>
+                  <div className='w-8 h-8 bg-highlight-chat-icon bg-cover'></div>
+                  <span className='text-sm text-lightBlue'>Messaging</span>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <div className='w-8 h-8 bg-chat-icon bg-cover'></div>
+                  <span className='text-sm'>Messaging</span>
+                </Fragment>
+              )}
+            </Link>
+            <div
+              className='flex flex-col items-center gap-1 cursor-pointer'
+              onMouseEnter={() => {
+                changeSelectedTab('notification')
+              }}
+              onMouseLeave={() => {
+                changeSelectedTab()
+              }}
+            >
+              {isSelectedTab.notificationsTab ? (
+                <Fragment>
+                  <div className='w-8 h-8 bg-highlight-alert-icon bg-cover'></div>
+                  <span className='text-sm text-lightBlue'>Notifications</span>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <div className='w-8 h-8 bg-alert-icon bg-cover'></div>
+                  <span className='text-sm'>Notifications</span>
+                </Fragment>
+              )}
             </div>
             <Popover
-              className='col-span-2 flex items-center justify-end py-1 hover:text-gray-900 cursor-pointer '
+              className='flex items-center justify-center cursor-pointer'
               renderPopover={
                 <div className='drop-shadow-md'>
                   <Link
                     to='/profile/about'
                     className='block w-full bg-white py-4 px-4 text-left hover:bg-slate-100 hover:text-cyan-500'
                   >
-                    <div className='flex justify-start pr-28 gap-2'>
-                      <icon_svg.user className='w-5 h-5' />
+                    <div className='flex justify-start items-center pr-28 gap-2'>
+                      <div className='w-7 h-7 bg-profile-icon bg-cover'></div>
                       <span className='mx-1'>Profile</span>
                     </div>
                   </Link>
@@ -52,8 +121,8 @@ export default function Header() {
                     to='/profile/list'
                     className='block w-full bg-white py-4 px-4 text-left hover:bg-slate-100 hover:text-cyan-500'
                   >
-                    <div className='flex justify-start pr-28 gap-2'>
-                      <icon_svg.bookmark className='w-5 h-5' />
+                    <div className='flex justify-start items-center pr-28 gap-2'>
+                      <div className='w-7 h-7 bg-reading-list-icon bg-cover'></div>
                       <span className='mx-1'>Library</span>
                     </div>
                   </Link>
@@ -61,8 +130,8 @@ export default function Header() {
                     to='/profile/story'
                     className='block w-full bg-white pt-4 pb-6 px-4 text-left hover:bg-slate-100 hover:text-cyan-500'
                   >
-                    <div className='flex justify-start pr-28 gap-2'>
-                      <icon_svg.bookOpen className='w-5 h-5' />
+                    <div className='flex justify-start items-center pr-28 gap-2'>
+                      <div className='w-7 h-7 bg-story-icon bg-cover'></div>
                       <span className='mx-1'>Stories</span>
                     </div>
                   </Link>
@@ -74,15 +143,14 @@ export default function Header() {
                 </div>
               }
             >
-              <div className='col-span-2 col-start-4 flex gap-2 hover:text-gray-900 cursor-pointer items-center'>
-                <div className='w-9 h-9 flex-shrink-0'>
+              <div className='col-span-1 cursor-pointer items-center'>
+                <div className='w-12 h-12 flex-shrink-0'>
                   <img
                     src={demo_images.avatarDemo}
                     alt='avatar-icon'
-                    className='w-full h-full object-cover rounded-full border border-lightBlue'
+                    className='w-full h-full object-cover rounded-full border border-black hover:border-lightBlue'
                   ></img>
                 </div>
-                <div>Me</div>
               </div>
             </Popover>
           </div>

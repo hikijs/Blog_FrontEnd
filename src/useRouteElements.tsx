@@ -1,6 +1,6 @@
 import { Outlet, Navigate, useRoutes } from 'react-router-dom'
 import Login from './pages/Login'
-import Profile from './pages/Profile'
+import { Stories, Lists, About } from './pages/Profile'
 import Register from './pages/Register'
 import ReadPost from './pages/ReadPost'
 import PostList from './pages/PostList'
@@ -8,6 +8,7 @@ import WritePost from './pages/WritePost'
 import MainLayout from './layouts/MainLayout'
 import ResetPassword from './pages/ResetPassword'
 import RegisterLayout from './layouts/RegisterLayout'
+import ProfileLayout from './layouts/ProfileLayout'
 
 const isAuthenticated = false
 // function ProtectedRoute() {
@@ -94,11 +95,27 @@ export default function useRouteElements() {
       )
     },
     {
-      path: 'profile',
+      path: 'profile/story',
       element: (
-        <MainLayout>
-          <Profile />
-        </MainLayout>
+        <ProfileLayout>
+          <Stories />
+        </ProfileLayout>
+      )
+    },
+    {
+      path: 'profile/list',
+      element: (
+        <ProfileLayout>
+          <Lists />
+        </ProfileLayout>
+      )
+    },
+    {
+      path: 'profile/about',
+      element: (
+        <ProfileLayout>
+          <About />
+        </ProfileLayout>
       )
     }
   ])

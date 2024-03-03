@@ -1,4 +1,5 @@
 import { demo_images } from 'src/utils/icons'
+import { Link } from 'react-router-dom'
 export default function PostThumbnail() {
   return (
     <div className='relative h-96'>
@@ -16,12 +17,16 @@ export default function PostThumbnail() {
             Reinforcement Learning 101: Building a RL Agent
           </div>
           <div className='flex justify-around items-center gap-2 cursor-pointer'>
-            <img
-              src={demo_images.avatarDemo}
-              alt='avatar-icon'
-              className='w-8 h-8 rounded-full border border-lightBlue cursor-pointer'
-            ></img>
-            <div className='text-xl font-thin text-white hover:text-lightBlue hover:underline'>Kioku</div>
+            <Link to='/profile/about'>
+              <img
+                src={demo_images.avatarDemo}
+                alt='avatar-icon'
+                className='w-8 h-8 rounded-full border border-lightBlue cursor-pointer'
+              ></img>
+            </Link>
+            <Link to='/profile/about'>
+              <div className='text-xl font-thin text-white hover:text-lightBlue hover:underline'>Kioku</div>
+            </Link>
             <div className='text-xl font-thin text-white'>/</div>
             <div className='text-xl font-thin text-white'>January 11 2024</div>
             <div className='text-xl font-thin text-white'>/</div>

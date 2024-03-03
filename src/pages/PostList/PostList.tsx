@@ -2,6 +2,7 @@ import CategoriesBar from 'src/components/CategoriesBar'
 import PostCard from 'src/components/PostCard'
 import SuggestFollow from 'src/components/SuggestFollow'
 import RecentlySaved from 'src/components/RecentlySaved'
+import { Link } from 'react-router-dom'
 export default function PostList() {
   return (
     <div className='container max-w-7xl mx-auto'>
@@ -25,9 +26,11 @@ export default function PostList() {
             <RecentlySaved />
             <RecentlySaved />
             <RecentlySaved />
-            <div className='text-base font-base text-lightBlue py-4 hover:underline hover:text-lightBlue cursor-pointer'>
-              See all (20)
-            </div>
+            <Link to='/profile/list'>
+              <div className='text-base font-base text-lightBlue py-4 hover:underline hover:text-lightBlue cursor-pointer'>
+                See all (20)
+              </div>
+            </Link>
           </div>
         </div>
       </div>

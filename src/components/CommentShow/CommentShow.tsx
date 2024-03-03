@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { demo_images, icon_svg } from 'src/utils/icons'
 import { Comment as CommentType } from 'src/types/comment.type'
 import CommentInput from '../CommentInput'
@@ -9,6 +10,7 @@ interface Props {
 export default function CommentShow(props: Props) {
   const { comment } = props
   const [isReplying, setIsReplying] = useState(false)
+  const [isLikedComment, setIsLikedComment] = useState(false)
   const [comments, setComments] = useState(comment.commentChild)
   const [showChildComments, setShowChildComments] = useState(false)
 
@@ -20,20 +22,35 @@ export default function CommentShow(props: Props) {
   return (
     <div className='py-2 pl-4 border-l border-b border-lightBlue rounded-l-md min-w-64 overflow-x-auto'>
       <div className='flex justify-start items-center gap-4 py-2'>
-        <img
-          src={demo_images.avatarDemo}
-          alt='avatar-icon'
-          className='w-8 h-8 object-cover rounded-full border border-lightBlue'
-        ></img>
+        <Link to='/profile/about'>
+          <img
+            src={demo_images.avatarDemo}
+            alt='avatar-icon'
+            className='w-8 h-8 object-cover rounded-full border border-lightBlue'
+          ></img>
+        </Link>
+
         <div className='flex flex-col justify-start'>
-          <div className='text-base font-bold hover:underline hover:text-lightBlue cursor-pointer'>Kioku</div>
+          <Link to='/profile/about'>
+            <div className='text-base font-bold hover:underline hover:text-lightBlue cursor-pointer'>Kioku</div>
+          </Link>
           <div className='text-xs font-thin'>5 days ago</div>
         </div>
       </div>
       <div className='flex justify-start my-2 text-justify text-sm'>{comment.comment}</div>
       <div className='flex justify-between items-center py-3'>
         <div className='flex justify-start gap-5'>
-          <icon_svg.heart className='w-6 h-6 cursor-pointer hover:text-lightBlue' />
+          <button
+            onClick={() => {
+              setIsLikedComment(!isLikedComment)
+            }}
+          >
+            {isLikedComment ? (
+              <div className='w-7 h-7 bg-highlight-like-icon bg-cover cursor-pointer'></div>
+            ) : (
+              <div className='w-7 h-7 bg-like-icon hover:bg-highlight-like-icon bg-cover cursor-pointer'></div>
+            )}
+          </button>
           {comments.length > 0 && (
             <button
               className='flex justify-start items-center gap-2'
@@ -41,8 +58,17 @@ export default function CommentShow(props: Props) {
                 setShowChildComments(!showChildComments)
               }}
             >
-              <icon_svg.comment className='w-6 h-6 cursor-pointer hover:text-lightBlue' />
-              {showChildComments ? <icon_svg.chevronDown className='w-6 h-6' /> : <div>{comments.length}</div>}
+              {showChildComments ? (
+                <div className='flex justify-start items-center gap-1'>
+                  <div className='w-7 h-7 bg-highlight-comment-icon bg-cover cursor-pointer'></div>
+                  <icon_svg.chevronDown className='w-6 h-6' />
+                </div>
+              ) : (
+                <div className='flex justify-start items-center gap-1'>
+                  <div className='w-7 h-7 bg-comment-icon hover:bg-highlight-comment-icon bg-cover cursor-pointer'></div>
+                  <div>{comments.length}</div>
+                </div>
+              )}
             </button>
           )}
         </div>
