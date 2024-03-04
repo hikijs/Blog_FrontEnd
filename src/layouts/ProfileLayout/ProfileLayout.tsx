@@ -2,6 +2,7 @@ import Footer from 'src/components/Footer'
 import Header from 'src/components/Header'
 import FollowingCard from 'src/components/FollowingCard'
 import EditProfilePanel from 'src/components/EditProfilePanel'
+import { Link } from 'react-router-dom'
 import { demo_images } from 'src/utils/icons'
 import { useState } from 'react'
 
@@ -26,9 +27,12 @@ export default function ProfileLayout({ children }: Props) {
                   className='w-28 h-28 rounded-full border border-lightBlue cursor-pointer'
                 ></img>
                 <div className='text-2xl font-bold pt-5'>Anh Khoa Vu</div>
-                <div className='text-1xl font-thin pt-3 hover:underline hover:text-lightBlue cursor-pointer'>
+                <Link
+                  to='/profile/follower'
+                  className='text-1xl font-thin pt-3 hover:underline hover:text-lightBlue cursor-pointer'
+                >
                   3 follower
-                </div>
+                </Link>
               </div>
               <button
                 className='text-1xl font-thin my-10 hover:underline text-lightBlue cursor-pointer'
@@ -41,9 +45,12 @@ export default function ProfileLayout({ children }: Props) {
               <FollowingCard />
               <FollowingCard />
               <FollowingCard />
-              <div className='text-base font-base text-lightBlue py-4 hover:underline hover:text-lightBlue cursor-pointer'>
+              <Link
+                to='/profile/following'
+                className='text-base font-base text-lightBlue py-4 hover:underline hover:text-lightBlue cursor-pointer'
+              >
                 See all (20)
-              </div>
+              </Link>
             </div>
           </div>
           {showEditPanel && <EditProfilePanel setShowEditPanel={setShowEditPanel} />}

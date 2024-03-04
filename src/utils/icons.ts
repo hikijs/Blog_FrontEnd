@@ -6,6 +6,7 @@ import chevronDown from 'src/assets/images/icon-svg/chevron-down'
 import chevronLeft from 'src/assets/images/icon-svg/chevron-left'
 import chevronRight from 'src/assets/images/icon-svg/chevron-right'
 import xCircle from 'src/assets/images/icon-svg/x-circle'
+import photo from 'src/assets/images/icon-svg/photo'
 import ellipsisHorizontal from 'src/assets/images/icon-svg/ellipsis-horizontal'
 
 export const demo_images = {
@@ -18,6 +19,7 @@ export const bg_images = {
 }
 export const icon_svg = {
   xCircle,
+  photo,
   chevronDown,
   chevronLeft,
   chevronRight,

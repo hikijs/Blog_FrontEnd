@@ -1,4 +1,6 @@
 export { default as About } from './About'
 export { default as Lists } from './Lists'
 export { default as Stories } from './Stories'
+export { default as Follow } from './Follow'
 export { default as ReadingListChild } from './ReadingListChild'
+export { default as SuggestionFollow } from './SuggestionFollow'

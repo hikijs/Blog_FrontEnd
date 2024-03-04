@@ -3,7 +3,7 @@ import { demo_images } from 'src/utils/icons'
 export default function RecentlySaved() {
   return (
     <div className='py-2'>
-      <Link to='profile/about'>
+      <Link to='/profile/about'>
         <div className='flex justify-start gap-6 py-2'>
           <img
             src={demo_images.avatarDemo}

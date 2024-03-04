@@ -4,7 +4,7 @@ export default function SuggestFollow() {
   return (
     <div className='grid grid-cols-6 py-2 gap-2'>
       <div className='col-span-1 flex justify-start items-start cursor-pointer'>
-        <Link to='profile/about'>
+        <Link to='/profile/about'>
           <img
             src={demo_images.avatarDemo}
             alt='avatar-icon'
@@ -13,7 +13,7 @@ export default function SuggestFollow() {
         </Link>
       </div>
       <div className='col-span-3 flex flex-col justify-start cursor-pointer'>
-        <Link to='profile/about'>
+        <Link to='/profile/about'>
           <div className='text-xl font-base pb-2 hover:underline hover:text-lightBlue'>Kioku</div>
           <div className='text-sm font-light'>Geospatial Development, GIS & Cartography</div>
         </Link>

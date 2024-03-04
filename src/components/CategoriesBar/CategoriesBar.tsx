@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { icon_svg } from 'src/utils/icons'
+import { Link } from 'react-router-dom'
 const topicList = [
   'GIS',
   'Relationship',
@@ -13,8 +14,11 @@ const topicList = [
   'Climate Change',
   'Data Science'
 ]
-
-function CategoriesBar() {
+interface Props {
+  categoryId?: string
+}
+function CategoriesBar(props: Props) {
+  const { categoryId } = props
   const topicWrapper = useRef(document.createElement('div'))
 
   const handleScroll = (speed: number, distance: number, step: number) => {
@@ -41,11 +45,20 @@ function CategoriesBar() {
       </div>
       <div className='flex pb-2 border-b border-lightBlue justify-start overflow-hidden' ref={topicWrapper}>
         {topicList.map((element, index) => {
-          return (
-            <div className='flex-shrink-0 p-4 hover:text-lightBlue' key={index}>
-              {element}
-            </div>
-          )
+          console.log(categoryId)
+          if (element === categoryId) {
+            return (
+              <div className='flex-shrink-0 p-4 text-lightBlue' key={index}>
+                {element}
+              </div>
+            )
+          } else {
+            return (
+              <Link to={`/${element}`} className='flex-shrink-0 p-4 hover:text-lightBlue' key={index}>
+                {element}
+              </Link>
+            )
+          }
         })}
       </div>
       <div

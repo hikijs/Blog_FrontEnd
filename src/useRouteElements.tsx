@@ -1,14 +1,14 @@
 import { Outlet, Navigate, useRoutes } from 'react-router-dom'
 import Login from './pages/Login'
-import { Stories, Lists, About, ReadingListChild } from './pages/Profile'
+import { Stories, Lists, About, Follow, ReadingListChild, SuggestionFollow } from './pages/Profile'
 import Register from './pages/Register'
 import ReadPost from './pages/ReadPost'
-import PostList from './pages/PostList'
+import PostList from './pages/PostList/PostList'
 import WritePost from './pages/WritePost'
 import MainLayout from './layouts/MainLayout'
 import ResetPassword from './pages/ResetPassword'
-import RegisterLayout from './layouts/RegisterLayout'
 import ProfileLayout from './layouts/ProfileLayout'
+import RegisterLayout from './layouts/RegisterLayout'
 
 const isAuthenticated = false
 // function ProtectedRoute() {
@@ -77,6 +77,15 @@ export default function useRouteElements() {
       )
     },
     {
+      path: '/:categoryId',
+      index: true,
+      element: (
+        <MainLayout>
+          <PostList categoryId='1' />
+        </MainLayout>
+      )
+    },
+    {
       path: '/read',
       index: true,
       element: (
@@ -123,6 +132,30 @@ export default function useRouteElements() {
       element: (
         <ProfileLayout>
           <About />
+        </ProfileLayout>
+      )
+    },
+    {
+      path: 'profile/following',
+      element: (
+        <ProfileLayout>
+          <Follow type='Following' />
+        </ProfileLayout>
+      )
+    },
+    {
+      path: 'profile/following/suggestions',
+      element: (
+        <ProfileLayout>
+          <SuggestionFollow />
+        </ProfileLayout>
+      )
+    },
+    {
+      path: 'profile/follower',
+      element: (
+        <ProfileLayout>
+          <Follow type='Follow' />
         </ProfileLayout>
       )
     }
