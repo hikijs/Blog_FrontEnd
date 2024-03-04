@@ -1,6 +1,6 @@
 import { Outlet, Navigate, useRoutes } from 'react-router-dom'
 import Login from './pages/Login'
-import { Stories, Lists, About } from './pages/Profile'
+import { Stories, Lists, About, ReadingListChild } from './pages/Profile'
 import Register from './pages/Register'
 import ReadPost from './pages/ReadPost'
 import PostList from './pages/PostList'
@@ -107,6 +107,14 @@ export default function useRouteElements() {
       element: (
         <ProfileLayout>
           <Lists />
+        </ProfileLayout>
+      )
+    },
+    {
+      path: 'profile/list/:listId',
+      element: (
+        <ProfileLayout>
+          <ReadingListChild />
         </ProfileLayout>
       )
     },
