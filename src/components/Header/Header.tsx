@@ -110,7 +110,7 @@ export default function Header() {
                 <div className='drop-shadow-md'>
                   <Link
                     to='/profile/about'
-                    className='block w-full bg-white py-4 px-4 text-left hover:bg-slate-100 hover:text-cyan-500'
+                    className='block w-full bg-white py-4 px-4 text-left hover:bg-slate-100 hover:text-lightBlue'
                   >
                     <div className='flex justify-start items-center pr-28 gap-2'>
                       <div className='w-7 h-7 bg-profile-icon bg-cover'></div>
@@ -119,7 +119,7 @@ export default function Header() {
                   </Link>
                   <Link
                     to='/profile/list'
-                    className='block w-full bg-white py-4 px-4 text-left hover:bg-slate-100 hover:text-cyan-500'
+                    className='block w-full bg-white py-4 px-4 text-left hover:bg-slate-100 hover:text-lightBlue'
                   >
                     <div className='flex justify-start items-center pr-28 gap-2'>
                       <div className='w-7 h-7 bg-reading-list-icon bg-cover'></div>
@@ -128,14 +128,14 @@ export default function Header() {
                   </Link>
                   <Link
                     to='/profile/story'
-                    className='block w-full bg-white pt-4 pb-6 px-4 text-left hover:bg-slate-100 hover:text-cyan-500'
+                    className='block w-full bg-white pt-4 pb-6 px-4 text-left hover:bg-slate-100 hover:text-lightBlue'
                   >
                     <div className='flex justify-start items-center pr-28 gap-2'>
                       <div className='w-7 h-7 bg-story-icon bg-cover'></div>
                       <span className='mx-1'>Stories</span>
                     </div>
                   </Link>
-                  <button className='block w-full bg-white py-4 px-4 text-left hover:bg-slate-100 hover:text-cyan-500 border-t border-lightBlue'>
+                  <button className='block w-full bg-white py-4 px-4 text-left hover:bg-slate-100 hover:text-lightBlue border-t border-lightBlue'>
                     <div className='flex items-center'>
                       <span className='mx-1'>Log out</span>
                     </div>
