@@ -1,12 +1,15 @@
 import { Outlet, Navigate, useRoutes } from 'react-router-dom'
 import Login from './pages/Login'
-import { Stories, Lists, About, Follow, ReadingListChild, SuggestionFollow } from './pages/Profile'
+import About from './pages/Profile/About'
+import Stories from './pages/Profile/Stories'
+import { ReadingListReview, ReadingListShow } from './pages/Profile/Lists'
+import { Follow, SuggestionFollow } from './pages/Profile/Follow'
 import Register from './pages/Register'
-import ReadPost from './pages/ReadPost'
+import PostRead from './pages/PostRead'
 import PostList from './pages/PostList/PostList'
-import WritePost from './pages/WritePost'
+import PostCreate from './pages/PostCreate'
 import MainLayout from './layouts/MainLayout'
-import ResetPassword from './pages/ResetPassword'
+import ChangePass from './pages/ChangePass'
 import ProfileLayout from './layouts/ProfileLayout'
 import RegisterLayout from './layouts/RegisterLayout'
 
@@ -61,7 +64,7 @@ export default function useRouteElements() {
           path: '/reset-password',
           element: (
             <RegisterLayout>
-              <ResetPassword />
+              <ChangePass />
             </RegisterLayout>
           )
         }
@@ -90,7 +93,7 @@ export default function useRouteElements() {
       index: true,
       element: (
         <MainLayout>
-          <ReadPost />
+          <PostRead />
         </MainLayout>
       )
     },
@@ -99,7 +102,7 @@ export default function useRouteElements() {
       index: true,
       element: (
         <MainLayout>
-          <WritePost />
+          <PostCreate />
         </MainLayout>
       )
     },
@@ -115,7 +118,7 @@ export default function useRouteElements() {
       path: 'profile/list',
       element: (
         <ProfileLayout>
-          <Lists />
+          <ReadingListReview />
         </ProfileLayout>
       )
     },
@@ -123,7 +126,7 @@ export default function useRouteElements() {
       path: 'profile/list/:listId',
       element: (
         <ProfileLayout>
-          <ReadingListChild />
+          <ReadingListShow />
         </ProfileLayout>
       )
     },

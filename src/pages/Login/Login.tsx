@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import Input from 'src/components/Input'
 import Button from 'src/components/Button'

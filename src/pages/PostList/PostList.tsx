@@ -1,7 +1,7 @@
-import CategoriesBar from 'src/components/CategoriesBar'
-import PostCard from 'src/components/PostCard'
-import SuggestFollow from 'src/components/SuggestFollow'
-import RecentlySaved from 'src/components/RecentlySaved'
+import CategoriesBar from 'src/pages/PostList/components/CategoriesBar'
+import PostCard from 'src/pages/PostList/components/PostCard'
+import SuggestFollow from 'src/pages/PostList/components/SuggestFollow'
+import RecentlySaved from 'src/pages/PostList/components/RecentlySaved'
 import { Link } from 'react-router-dom'
 
 interface Props {
