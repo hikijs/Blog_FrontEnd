@@ -75,8 +75,12 @@ export default function About() {
       </div>
       <div className='flex justify-start py-4 text-base font-medium'>Medium member since November 2023</div>
       <div className='flex justify-start text-lightBlue text-base font-thin gap-4'>
-        <div>3 Followers</div>
-        <div>27 Following</div>
+        <Link to='/profile/follower' className='hover:underline'>
+          3 Followers
+        </Link>
+        <Link to='/profile/following' className='hover:underline'>
+          27 Following
+        </Link>
       </div>
     </div>
   )
