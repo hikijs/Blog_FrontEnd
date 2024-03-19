@@ -1,22 +1,26 @@
-import { Link } from 'react-router-dom'
-import { Fragment, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { Fragment, useEffect, useState } from 'react'
 import Popover from '../Popover'
 import { demo_images } from 'src/utils/icons'
 
 export default function Header() {
-  const [isSelectedTab, setIsSelectedTab] = useState({
-    writeTab: false,
-    chatTab: false,
-    notificationsTab: false
+  const location = useLocation()
+  const [showNotificationPopup, setShowNotificationPopup] = useState(false)
+  const [isSelectedTab, setIsPage] = useState({
+    home: true,
+    write: false,
+    chat: false
   })
 
-  const changeSelectedTab = (tab?: string) => {
-    setIsSelectedTab({
-      writeTab: tab === 'write' ? true : false,
-      chatTab: tab === 'chat' ? true : false,
-      notificationsTab: tab === 'notification' ? true : false
+  useEffect(() => {
+    const pathname = location?.pathname
+    setIsPage({
+      home: pathname === '/' ? true : false,
+      write: pathname === '/new-story' ? true : false,
+      chat: pathname === '/messaging' ? true : false
     })
-  }
+    setShowNotificationPopup(false)
+  }, [location])
 
   return (
     <div className='bg-white py-5 text-gray-500 border-b border-lightBlue'>
@@ -39,17 +43,21 @@ export default function Header() {
             </div>
           </form>
           <div className='col-span-4 col-start-9 flex justify-between items-center'>
-            <Link
-              to='/new-story'
-              className='flex flex-col items-center gap-1 cursor-pointer'
-              onMouseEnter={() => {
-                changeSelectedTab('write')
-              }}
-              onMouseLeave={() => {
-                changeSelectedTab()
-              }}
-            >
-              {isSelectedTab.writeTab ? (
+            <Link to='/' className='flex flex-col items-center gap-1 cursor-pointer'>
+              {isSelectedTab.home ? (
+                <Fragment>
+                  <div className='w-8 h-8 bg-highlight-home-icon bg-cover'></div>
+                  <span className='text-sm text-lightBlue'>Home</span>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <div className='w-8 h-8 bg-home-icon bg-cover'></div>
+                  <span className='text-sm'>Home</span>
+                </Fragment>
+              )}
+            </Link>
+            <Link to='/new-story' className='flex flex-col items-center gap-1 cursor-pointer'>
+              {isSelectedTab.write ? (
                 <Fragment>
                   <div className='w-8 h-8 bg-highlight-write-icon bg-cover'></div>
                   <span className='text-sm text-lightBlue'>New Story</span>
@@ -61,17 +69,8 @@ export default function Header() {
                 </Fragment>
               )}
             </Link>
-            <Link
-              to='/new-story'
-              className='flex flex-col items-center gap-1 cursor-pointer'
-              onMouseEnter={() => {
-                changeSelectedTab('chat')
-              }}
-              onMouseLeave={() => {
-                changeSelectedTab()
-              }}
-            >
-              {isSelectedTab.chatTab ? (
+            <Link to='/messaging' className='flex flex-col items-center gap-1 cursor-pointer'>
+              {isSelectedTab.chat ? (
                 <Fragment>
                   <div className='w-8 h-8 bg-highlight-chat-icon bg-cover'></div>
                   <span className='text-sm text-lightBlue'>Messaging</span>
@@ -83,16 +82,18 @@ export default function Header() {
                 </Fragment>
               )}
             </Link>
-            <div
+            <button
               className='flex flex-col items-center gap-1 cursor-pointer'
-              onMouseEnter={() => {
-                changeSelectedTab('notification')
-              }}
-              onMouseLeave={() => {
-                changeSelectedTab()
+              onClick={() => {
+                setIsPage({
+                  home: false,
+                  write: false,
+                  chat: false
+                })
+                setShowNotificationPopup(true)
               }}
             >
-              {isSelectedTab.notificationsTab ? (
+              {showNotificationPopup ? (
                 <Fragment>
                   <div className='w-8 h-8 bg-highlight-alert-icon bg-cover'></div>
                   <span className='text-sm text-lightBlue'>Notifications</span>
@@ -103,7 +104,7 @@ export default function Header() {
                   <span className='text-sm'>Notifications</span>
                 </Fragment>
               )}
-            </div>
+            </button>
             <Popover
               className='flex items-center justify-center cursor-pointer'
               renderPopover={

@@ -4,6 +4,7 @@ import About from './pages/Profile/About'
 import Stories from './pages/Profile/Stories'
 import { ReadingListReview, ReadingListShow } from './pages/Profile/Lists'
 import { Follow, SuggestionFollow } from './pages/Profile/Follow'
+import Messaging from './pages/Messaging/Messaging'
 import Register from './pages/Register'
 import PostRead from './pages/PostRead'
 import PostList from './pages/PostList/PostList'
@@ -94,6 +95,15 @@ export default function useRouteElements() {
       element: (
         <MainLayout>
           <PostRead />
+        </MainLayout>
+      )
+    },
+    {
+      path: '/messaging',
+      index: true,
+      element: (
+        <MainLayout>
+          <Messaging />
         </MainLayout>
       )
     },

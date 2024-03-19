@@ -25,6 +25,9 @@ module.exports = {
       backgroundImage: () => ({
         // Logo-icon
         'logo-icon': "url('src/assets/images/icon-images/logo-icon.png')",
+        // Home-icon
+        'home-icon': "url('src/assets/images/icon-images/normal-home-icon.png')",
+        'highlight-home-icon': "url('src/assets/images/icon-images/highlight-home-icon.png')",
         // Write-icon
         'write-icon': "url('src/assets/images/icon-images/normal-write-icon.png')",
         'highlight-write-icon': "url('src/assets/images/icon-images/highlight-write-icon.png')",

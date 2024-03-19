@@ -45,7 +45,6 @@ function CategoriesBar(props: Props) {
       </div>
       <div className='flex pb-2 border-b border-lightBlue justify-start overflow-hidden' ref={topicWrapper}>
         {topicList.map((element, index) => {
-          console.log(categoryId)
           if (element === categoryId) {
             return (
               <div className='flex-shrink-0 p-4 text-lightBlue' key={index}>
